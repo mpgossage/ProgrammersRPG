@@ -39,8 +39,8 @@ public class BasicMove : MonoBehaviour {
 		if (knockback.IsKnocked)	return;
 		if (RpgDialog.Visible)
 		{
-			animation.CrossFade(idleClip.name);
-			animation.wrapMode=WrapMode.Once;
+			GetComponent<Animation>().CrossFade(idleClip.name);
+			GetComponent<Animation>().wrapMode=WrapMode.Once;
 			character.Move(Vector3.down * Time.deltaTime);	// move down rather than allow motion
 			return;			
 		}
@@ -96,7 +96,7 @@ public class BasicMove : MonoBehaviour {
 		if (attack>=0)
 		{
 			// check if animation finished (or within 0.1)
-			AnimationState anim=animation[attackClips[attack].name];
+			AnimationState anim=GetComponent<Animation>()[attackClips[attack].name];
 			if (anim.time/anim.length>0.5f && anim.time/anim.length<0.6f)
 			{
 				if (attackFlag==false)
@@ -116,7 +116,7 @@ public class BasicMove : MonoBehaviour {
 		if (skillAttack)
 		{
 			// check if animation finished (or within 0.1)
-			AnimationState anim=animation[skillClip.name];
+			AnimationState anim=GetComponent<Animation>()[skillClip.name];
 			if (anim.time/anim.length>0.5f && anim.time/anim.length<0.6f)
 			{
 				if (attackFlag==false)
@@ -134,13 +134,13 @@ public class BasicMove : MonoBehaviour {
 				goal=skillClip;
 		}
 		
-		animation.CrossFade(goal.name);
-		animation.wrapMode=WrapMode.Once;
+		GetComponent<Animation>().CrossFade(goal.name);
+		GetComponent<Animation>().wrapMode=WrapMode.Once;
 		
 		if (goal==walkClip || goal==runClip || goal==backClip)
 		{
 			// only start if a clip is stopped & player on the ground
-			if (audio.isPlaying==false && character.isGrounded)
+			if (GetComponent<AudioSource>().isPlaying==false && character.isGrounded)
 			{
 				PlayFootstep(running);
 			}
@@ -153,11 +153,11 @@ public class BasicMove : MonoBehaviour {
 	}
 	void PlayFootstep(bool running)
 	{
-		audio.clip=footstepAudios[Random.Range(0,footstepAudios.Length)];
-		audio.Play();
+		GetComponent<AudioSource>().clip=footstepAudios[Random.Range(0,footstepAudios.Length)];
+		GetComponent<AudioSource>().Play();
 		if (running)	// running use audio2
 		{
-			float delay=audio.clip.length/2;
+			float delay=GetComponent<AudioSource>().clip.length/2;
 			audio2.clip=footstepAudios[Random.Range(0,footstepAudios.Length)];
 			audio2.PlayDelayed(delay);
 		}

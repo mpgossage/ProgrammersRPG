@@ -13,6 +13,7 @@ public class Credits : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
+        Invoke("SetMonsterHealth", 0.1f); // cannot do at start, so do a little later
 		InvokeRepeating("NextItem",1,timePerItem);	
 		// hide all the children
 		for(int i=0;i<pathBase.transform.childCount;i++)
@@ -21,7 +22,7 @@ public class Credits : MonoBehaviour {
 	
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
 		{
 			autoMove=false;
 			if (index>1)
@@ -53,7 +54,7 @@ public class Credits : MonoBehaviour {
 		}
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
-			audio.Play();
+			GetComponent<AudioSource>().Play();
 			Transition.FadeIn(Transition.Black,1);
 			Invoke("GoMenu",1.5f);	// call next scene soon
 		}
@@ -86,4 +87,12 @@ public class Credits : MonoBehaviour {
 			target.gameObject.SetActive(true);
 		}
 	}
+
+    void SetMonsterHealth()
+    {
+        // find the monster & put it at 75% health to show the healthbar effect:
+        GameObject monster = GameObject.Find("Monster");
+        monster.GetComponent<DisplayBar3D>().Value = 0.75f;
+    }
+
 }

@@ -16,8 +16,8 @@ public class SpawnTreasure : MonoBehaviour {
             {
                 Vector3 v = new Vector3(Random.Range(-velocity, velocity), Random.Range(velocity*0.5f,velocity*1.5f), Random.Range(-velocity, velocity));
                 GameObject obj = (GameObject)Instantiate(toSpawn, transform.position+offset, Quaternion.identity);
-                obj.rigidbody.velocity = v;
-                obj.rigidbody.angularVelocity = Random.insideUnitSphere;
+                obj.GetComponent<Rigidbody>().velocity = v;
+                obj.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere;
             }
             Destroy(this);
         }

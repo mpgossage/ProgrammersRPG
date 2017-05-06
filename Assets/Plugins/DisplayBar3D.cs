@@ -77,7 +77,7 @@ public class DisplayBar3D : MonoBehaviour
         cols[4] = cols[5] = cols[6] = cols[7] = Color.green;
         mesh.colors = cols;
         // set material
-        meshRenderer.material = new Material(SHADER);
+        meshRenderer.material = new Material(Shader.Find("Sprites/Default"));
 
         SetValue(1);
     }
@@ -131,18 +131,4 @@ public class DisplayBar3D : MonoBehaviour
         theBar.transform.LookAt(theBar.transform.position + Camera.main.transform.rotation * Vector3.forward,
                 Camera.main.transform.rotation * Vector3.up);
     }
-
-    /* Unlit Vertex colour shader 	
-     * from: http://answers.unity3d.com/questions/51665/colors-do-not-work-with-a-mesh-created-in-script.html	
-     */
-    const string SHADER = @" Shader ""UnlitVertexColor"" {
-    Category {
-        BindChannels { 
-            Bind ""Color"", color 
-            Bind ""Vertex"", vertex
-        }
-        SubShader { Pass { } }
-    }
-}";
-
 }

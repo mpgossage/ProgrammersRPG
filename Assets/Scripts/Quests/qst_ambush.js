@@ -50,7 +50,7 @@ function SpawnMonsters()
         var g:Golem=obj.GetComponent("Golem") as Golem;
         g.toGuard=gameObject;	// guard this thing
         g.enabled=false; // dont act yet
-        obj.animation.CrossFade(g.idleClip.name);	// idle animation
+        obj.GetComponent.<Animation>().CrossFade(g.idleClip.name);	// idle animation
         monsters.Push(obj);
     }
     return monsters;

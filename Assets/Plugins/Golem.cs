@@ -58,9 +58,9 @@ public class Golem : MonoBehaviour {
 			if (Vector3.Distance(transform.position,chaseTarget.position)<attackRange)
 			{
 				MoveTowards(patrolPoint,0);	// turn to it
-				animation.CrossFade(attackClip.name); //attack		
+				GetComponent<Animation>().CrossFade(attackClip.name); //attack		
 				// player damaged: (need attackFlag to stop multitrigger) 
-				AnimationState state=animation[attackClip.name];
+				AnimationState state=GetComponent<Animation>()[attackClip.name];
 				if (state.time>state.length-0.1f)
 				{
 					if (attackFlag==false)
@@ -78,19 +78,19 @@ public class Golem : MonoBehaviour {
 			else
 			{
 				MoveTowards(patrolPoint,runSpeed);
-				animation.CrossFade(runClip.name);			
+				GetComponent<Animation>().CrossFade(runClip.name);			
 			}
 		}
 		else
 		{
 			if (current==Task.Wait)
 			{
-				animation.CrossFade(idleClip.name);			
+				GetComponent<Animation>().CrossFade(idleClip.name);			
 			}
 			if (current==Task.Patrol)
 			{
 				MoveTowards(patrolPoint,walkSpeed);
-				animation.CrossFade(walkClip.name);			
+				GetComponent<Animation>().CrossFade(walkClip.name);			
 			}
 		}
 	}
@@ -114,7 +114,7 @@ public class Golem : MonoBehaviour {
 		health.Value=(float)hp/maxHP;
 		if (hp<=0)
 		{
-			animation.CrossFade("death");
+			GetComponent<Animation>().CrossFade("death");
 			//Destroy(health,3);
 			Destroy(knock,4);
 			gameObject.AddComponent<FlickerThenVanish>();	// will get rid of it

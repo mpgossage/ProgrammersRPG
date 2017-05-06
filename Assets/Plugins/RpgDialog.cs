@@ -85,8 +85,8 @@ public class RpgDialog : MonoBehaviour
 		{
 			if (oldCounter!=Mathf.FloorToInt(textCounter))	// if new text
 			{
-				audio.clip=tickSound;	// make sure it stays as a tick
-				audio.Play();
+				GetComponent<AudioSource>().clip=tickSound;	// make sure it stays as a tick
+				GetComponent<AudioSource>().Play();
 			}
 		}
         if (textCounter >= theText.Length)

@@ -10,7 +10,7 @@ public class TextFloat : MonoBehaviour {
 	float age=0;
 	// Use this for initialization
 	void Start () {
-		baseColor=renderer.material.color;
+		baseColor=GetComponent<Renderer>().material.color;
 	
 	}
 	
@@ -28,7 +28,7 @@ public class TextFloat : MonoBehaviour {
 		{
 			Color col=baseColor;
 			col.a*=1-(age/lifeTime);
-			renderer.material.color=col;
+			GetComponent<Renderer>().material.color=col;
 		}
 	}
 }

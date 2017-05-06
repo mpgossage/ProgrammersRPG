@@ -1,14 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(AudioSource))]
 public class RPGSounds : MonoBehaviour {
 	public AudioClip mainMusic,fightMusic;
 	public AudioClip[] combatSounds;
 	public AudioClip playerDieClip,teleportClip;
-	
+    private AudioSource audioSource;
+
 	void Start()
 	{
-		EndCombat();
+        audioSource = GetComponent<AudioSource>();
+
+        EndCombat();
 	}
 
 	
@@ -27,8 +31,8 @@ public class RPGSounds : MonoBehaviour {
 	
 	public void PlayOneShot(AudioClip clip)
 	{
-		// ignore pos
-		audio.PlayOneShot(clip);
+        // ignore pos
+        audioSource.PlayOneShot(clip);
 	}
 	
 	

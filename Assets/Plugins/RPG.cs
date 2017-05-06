@@ -149,13 +149,13 @@ public class RPG : MonoBehaviour
 		move.enabled=false;	// turn off user control
 		CharacterKnockback knock=player.GetComponent<CharacterKnockback>();
 		knock.enabled=false;	// turn off knockback too
-		player.animation.CrossFade("Death");
-        yield return new WaitForSeconds(player.animation["Death"].length);  // wait for death
+		player.GetComponent<Animation>().CrossFade("Death");
+        yield return new WaitForSeconds(player.GetComponent<Animation>()["Death"].length);  // wait for death
 		// run a transition
         Transition.FadeIn(instance.loseTex, 1);
         yield return new WaitForSeconds(1.5f);  // 1 second on, then 1/2 way though the wait
 		// reset animation:
-		player.animation.Play("Idle");
+		player.GetComponent<Animation>().Play("Idle");
         // mid transition: respawn
         RespawnPoint.RespawnPlayer();
 		playerHp=playerMaxHp;

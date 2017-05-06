@@ -66,7 +66,7 @@ function HitOldMan(oldman:GameObject)
 {
 	oldman.tag="Monster";	// a monster tag makes it knockable
     // add behavior to allow knockback
-    var knock: CharacterKnockback = oldman.AddComponent("CharacterKnockback") as CharacterKnockback;
+    var knock: CharacterKnockback = oldman.AddComponent.<CharacterKnockback>() as CharacterKnockback;
 
 	// wait for the oldman to be hit
     while (!knock.IsKnocked)    // if the person hasn't hit the man

@@ -34,7 +34,7 @@ public class Coin : MonoBehaviour {
 	void Pickable()
 	{
 		pickable=true;
-        rigidbody.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
 	}
 	
 	void OnTriggerEnter(Collider collider)
@@ -42,8 +42,8 @@ public class Coin : MonoBehaviour {
 		if (collider.gameObject.tag=="Player" && pickable)
 		{
 			target=collider.transform;	// home in on the player
-			gameObject.collider.enabled=false;	// turn off collisions for coin			
-			Destroy(rigidbody);
+			gameObject.GetComponent<Collider>().enabled=false;	// turn off collisions for coin			
+			Destroy(GetComponent<Rigidbody>());
 		}
 	}
 }

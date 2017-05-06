@@ -20,8 +20,8 @@ public class FlickerThenVanish : MonoBehaviour {
 	
 	void Flicker()
 	{
-		if (renderer!=null)
-			renderer.enabled=!renderer.enabled;
+		if (GetComponent<Renderer>()!=null)
+			GetComponent<Renderer>().enabled=!GetComponent<Renderer>().enabled;
 		if (meshRenderer!=null)
 			meshRenderer.enabled=!meshRenderer.enabled;
 			

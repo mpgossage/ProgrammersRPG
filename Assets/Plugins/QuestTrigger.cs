@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class QuestTrigger : MonoBehaviour {
 
@@ -15,7 +16,11 @@ public class QuestTrigger : MonoBehaviour {
             {
 				// add quest to the main RPG & this destroy myself to stop muliple triggers
 				GameObject rpg=GameObject.FindGameObjectWithTag("GameController");
-				rpg.AddComponent(questName);
+                Type questType = Type.GetType(questName);
+                Debug.LogFormat("AddQuest {0} {1}", questName, questType);
+                rpg.AddComponent(questType);
+
+				//UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent(rpg, "Assets/Plugins/QuestTrigger.cs (18,5)", questName);
 				Destroy(this);
             }
         }

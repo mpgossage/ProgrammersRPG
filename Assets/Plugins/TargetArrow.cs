@@ -31,10 +31,10 @@ public class TargetArrow : MonoBehaviour
     {
         if (target == null) // no target/ not visible
         {
-            renderer.enabled = false;
+            GetComponent<Renderer>().enabled = false;
             return;
         }
-        renderer.enabled = true;
+        GetComponent<Renderer>().enabled = true;
         if (Vector3.Distance(player.transform.position, target.transform.position) > nearDistance)
         {
             // player is not so near: it appears between player & target
