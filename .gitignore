@@ -28,3 +28,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+Assets/Models/Blade_Warrior/
+
+Assets/Models/Blade_girl/

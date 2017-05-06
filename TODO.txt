@@ -1,0 +1,10 @@
+remove exit button
+
+speed/skip the intro
+full check for spellings
+
+change intro to turning pages
+
+move animations to different code & fix them
+check on size shrinking & what uses what
+
