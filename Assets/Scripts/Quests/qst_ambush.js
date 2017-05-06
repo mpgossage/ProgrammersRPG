@@ -24,7 +24,7 @@ function Start ()
 	
 	var girl:GameObject=RPG.Instance.Spawn("BladeGirl",GameObject.Find("GirlSpawn").transform.position);	
 	yield RpgDialog.ShowCo("Hey, who's that over there?",portrait,null);
-	yield RpgDialog.ShowCo("Lets go an talk to them",portrait,null);
+	yield RpgDialog.ShowCo("Lets go and talk to them",portrait,null);
 	TargetArrow.SetTarget(girl);
 	Destroy(this);	// remove it
 }

@@ -90,9 +90,9 @@ public class Credits : MonoBehaviour {
 
     void SetMonsterHealth()
     {
-        // find the monster & put it at 75% health to show the healthbar effect:
+        // find the monster & put it at 25% health to show the healthbar effect:
         GameObject monster = GameObject.Find("Monster");
-        monster.GetComponent<DisplayBar3D>().Value = 0.75f;
+        monster.GetComponent<DisplayBar3D>().Value = 0.25f;
     }
 
 }

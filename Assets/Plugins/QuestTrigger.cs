@@ -4,8 +4,14 @@ using System;
 
 public class QuestTrigger : MonoBehaviour {
 
-    public string questName;
+    [SerializeField]
+    private MonoBehaviour questComponent;
     public string flagPrereq;
+
+    private void Awake()
+    {
+        questComponent.enabled = false; // turn it off
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -16,12 +22,14 @@ public class QuestTrigger : MonoBehaviour {
             {
 				// add quest to the main RPG & this destroy myself to stop muliple triggers
 				GameObject rpg=GameObject.FindGameObjectWithTag("GameController");
-                Type questType = Type.GetType(questName);
-                Debug.LogFormat("AddQuest {0} {1}", questName, questType);
-                rpg.AddComponent(questType);
+                //Type questType = Type.GetType(questName);
+                //..Debug.LogFormat("AddQuest {0} {1}", questName, questType.Name);
+                //UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent(rpg, "Assets/Plugins/QuestTrigger.cs (21,17)", questName);
+                Transform quests = rpg.transform.Find("Quests");                
+                rpg.AddComponent(questComponent.GetType()); // add this component to the quest system
 
-				//UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent(rpg, "Assets/Plugins/QuestTrigger.cs (18,5)", questName);
-				Destroy(this);
+                //UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent(rpg, "Assets/Plugins/QuestTrigger.cs (18,5)", questName);
+                Destroy(this);
             }
         }
     }

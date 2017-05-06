@@ -12,23 +12,23 @@ public class RPG : MonoBehaviour
 	public Texture2D loseTex;
 	public bool shortDialog=false;
 
-    //GameObject player;
-    //BasicMove playerMove;
-	
 	public static int playerHp=100,playerMaxHp=100;
 	static RPG instance;
 	public static RPG Instance{get{return instance;}}
 
-    //public string startQuest = "";
-    //public GameObject textFloatPrefab;
-	
 	DisplayBar hpBar;
 	
 	void Awake()
 	{
+        //Debug.LogWarning("RPG.awake " + this.GetInstanceID());
 		instance=this;
 	}
-	
+    private void OnDestroy()
+    {
+        //Debug.LogWarning("RPG.destroy " + this.GetInstanceID());
+        instance = null;
+    }
+
     void Start()
     {
         //player = GameObject.FindGameObjectWithTag("Player");

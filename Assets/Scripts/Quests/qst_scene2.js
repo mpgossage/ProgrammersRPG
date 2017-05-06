@@ -47,7 +47,7 @@ function Start () {
     yield WaitForSeconds(3.0f);
     MessageDisplay.Show("Really could have done with a quest or two along the way");
     yield WaitForSeconds(3.0f);
-    MessageDisplay.Show("This is a sure sign of poor time management");
+    MessageDisplay.Show("This is a sure sign of game padding");
     yield WaitForSeconds(3.0f);
     MessageDisplay.Show("Or the day job getting in the way of building a game");
 }
