@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class SlideShow : MonoBehaviour 
 {
@@ -47,7 +48,7 @@ public class SlideShow : MonoBehaviour
         {
             // fade out
             Transition.DoTransitionOut(Transition.TransType.Fade, slides[slides.Length - 1]);
-            Application.LoadLevel(nextScene);
+            SceneManager.LoadScene(nextScene);
         }
 	}
     void OnGUI()

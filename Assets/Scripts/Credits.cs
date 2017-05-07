@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Credits : MonoBehaviour {
 	
@@ -61,7 +62,7 @@ public class Credits : MonoBehaviour {
 	}
 	void GoMenu()
 	{
-		Application.LoadLevel("menu");
+        SceneManager.LoadScene("menu");
 	}
 	
 	// Update is called once per frame

@@ -91,7 +91,8 @@ public class RpgDialog : MonoBehaviour
 		}
         if (textCounter >= theText.Length)
         {
-			Screen.lockCursor=false;
+            Cursor.lockState = CursorLockMode.None;
+            //Screen.lockCursor=false;
             if (Input.GetKeyDown(KeyCode.Space))
                 Hide();
             // check mouse pos (inverted because unity has mouse at bottom left)
@@ -101,8 +102,12 @@ public class RpgDialog : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
                 Hide();
         }
-		else
-			Screen.lockCursor=true;
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            //Screen.lockCursor = true;
+        }
     }
 
     void OnGUI()

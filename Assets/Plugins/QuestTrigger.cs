@@ -22,23 +22,12 @@ public class QuestTrigger : MonoBehaviour {
             {
 				// add quest to the main RPG & this destroy myself to stop muliple triggers
 				GameObject rpg=GameObject.FindGameObjectWithTag("GameController");
-                //Type questType = Type.GetType(questName);
-                //..Debug.LogFormat("AddQuest {0} {1}", questName, questType.Name);
-                //UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent(rpg, "Assets/Plugins/QuestTrigger.cs (21,17)", questName);
-                Transform quests = rpg.transform.Find("Quests");                
+                // because unity will not allow add component by name
+                // we now have an existing component attached & use its type to get the correct version
+                // string=>Type never works for javascript behaviours
                 rpg.AddComponent(questComponent.GetType()); // add this component to the quest system
-
-                //UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent(rpg, "Assets/Plugins/QuestTrigger.cs (18,5)", questName);
                 Destroy(this);
             }
         }
     }
-    /*IEnumerator StartQuest()
-    {
-        RpgCutscene.Show(questName);
-        // wait for it to finish
-        while (RpgCutscene.IsRunning())
-            yield return 0;
-        Destroy(this);  // remove the behaviour to stop retriggering
-    }*/
 }

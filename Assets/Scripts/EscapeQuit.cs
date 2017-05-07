@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class EscapeQuit : MonoBehaviour 
 {
@@ -17,7 +18,7 @@ public class EscapeQuit : MonoBehaviour
 			float timeSinceLastClick=Time.time-lastClick;
 			if (timeSinceLastClick<=clickRate)	// its a fast click
 			{
-				Application.LoadLevel(exitScene);
+                SceneManager.LoadScene(exitScene);
 			}
 			else
 			{

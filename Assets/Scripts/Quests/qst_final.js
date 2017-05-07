@@ -30,5 +30,5 @@ function Start ()
 	var effect:Texture2D=Resources.Load("YouWin") as Texture2D;
 	Transition.SlideIn(effect,2);
 	yield WaitForSeconds(2.0);	// wait for mid transtion
-	Application.LoadLevel("credits");
+	UnityEngine.SceneManagement.SceneManager.LoadScene("credits");
 }

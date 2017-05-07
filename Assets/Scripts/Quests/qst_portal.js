@@ -33,6 +33,6 @@ function Start ()
 	var effect:Texture2D=Resources.Load("special_effect") as Texture2D;
 	Transition.SlideIn(effect,2);
 	yield WaitForSeconds(2.5);	// wait for mid transtion
-	Application.LoadLevel("scene2");
+	UnityEngine.SceneManagement.SceneManager.LoadScene("scene2");
 }
 
