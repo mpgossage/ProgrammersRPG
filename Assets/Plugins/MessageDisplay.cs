@@ -66,6 +66,10 @@ public class MessageDisplay : MonoBehaviour {
             ShowMessage("");    // adds a blank
             // which will advance the timer too
         }
+        if (top >= 0)
+            mainRect = new Rect(border, top, Screen.width - border * 2, height);
+        else
+            mainRect = new Rect(border, Screen.height + top, Screen.width - border * 2, height);
         string s = "";
         for (int i = 0; i < messages.Count; i++)
         {

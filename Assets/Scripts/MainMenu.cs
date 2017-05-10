@@ -7,6 +7,8 @@ public class MainMenu : MonoBehaviour
 	public Texture2D background;
 	public GUISkin skin;
 	public AudioClip selectClip,cancelClip;
+    [SerializeField]
+    private Texture2D btnFullScreen;
 
     private AudioSource audioSource;
 	string nextScene;
@@ -58,10 +60,17 @@ public class MainMenu : MonoBehaviour
 			Transition.FadeIn(Transition.Black,1);
 			Invoke("GotoWebsite",1.5f);	// call website
 		}
-#endif		
-		
-		
-		GUI.skin=oldSkin;
+#endif
+#if UNITY_WEBGL // if its an webgl
+		if (GUI.Button(new Rect(Screen.width-20- btnFullScreen.width*2,Screen.height-40-btnFullScreen.height*2, 
+                        btnFullScreen.width*2,btnFullScreen.height*2),btnFullScreen))
+		{
+            Screen.fullScreen = !Screen.fullScreen;
+		}
+#endif
+
+
+        GUI.skin=oldSkin;
 	}
 	
 	void GotoWebsite()

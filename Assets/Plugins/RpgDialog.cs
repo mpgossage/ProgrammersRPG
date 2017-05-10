@@ -58,11 +58,7 @@ public class RpgDialog : MonoBehaviour
 			AudioSource aud=gameObject.AddComponent<AudioSource>();
 			aud.clip=tickSound;
 		}
-		
-        if (top>=0)
-            mainRect = new Rect(border, top, Screen.width - border*2, height);
-        else
-            mainRect = new Rect(border, Screen.height + top, Screen.width - border * 2, height);
+        ComputeMainRect();
     }
 
 	// Update is called once per frame
@@ -74,6 +70,7 @@ public class RpgDialog : MonoBehaviour
 			if (fade<0) fade=0;
             return;
         }
+        ComputeMainRect();
         fade = 1;
 		int oldCounter=Mathf.FloorToInt(textCounter); // for use later in audio
         if (Input.anyKey)   // any key makes it faster
@@ -140,5 +137,13 @@ public class RpgDialog : MonoBehaviour
         // restore old stuff
         GUI.color = oldCol;
         GUI.skin = oldskin;
+    }
+
+    private void ComputeMainRect()
+    {
+        if (top >= 0)
+            mainRect = new Rect(border, top, Screen.width - border * 2, height);
+        else
+            mainRect = new Rect(border, Screen.height + top, Screen.width - border * 2, height);
     }
 }
