@@ -39,7 +39,7 @@ function DoWalkAbout()
     }
     MessageDisplay.Show("Use the mouse to look around");
     counter = 0;
-    while (counter < 2)
+    while (counter < 1)
     {
         if (Input.GetAxisRaw("Mouse X") != 0 ||
             Input.GetAxisRaw("Mouse Y") != 0)
@@ -50,7 +50,7 @@ function DoWalkAbout()
     }
     MessageDisplay.Show("Use the mouse wheel to move in and out");
     counter = 0;
-    while (counter < 0.5f)
+    while (counter < 0.25f)
     {
         if (Input.GetAxisRaw("Mouse ScrollWheel") != 0)
         {

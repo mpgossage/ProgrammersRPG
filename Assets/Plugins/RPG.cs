@@ -31,18 +31,16 @@ public class RPG : MonoBehaviour
 
     void Start()
     {
-        //player = GameObject.FindGameObjectWithTag("Player");
-        //playerMove = player.GetComponent<BasicMove>();
 		hpBar=GetComponent<DisplayBar>();
 		hpBar.BarRectangle.width=Screen.width/5;
 		hpBar.BarRectangle.height=Screen.height/10;
-		Rect r=hpBar.BarRectangle;
-		hpBar.BarRectangle.x=Screen.width-5-r.width;
-		hpBar.BarRectangle.y=5;
     }
     void Update()
     {
-		hpBar.Value=(float)playerHp/playerMaxHp;
+        Rect r = hpBar.BarRectangle;
+        hpBar.BarRectangle.x = Screen.width - 5 - r.width;
+        hpBar.BarRectangle.y = 5;
+        hpBar.Value=(float)playerHp/playerMaxHp;
         /*if (RpgDialog.Visible)
             playerMove.enabled = false;
         else
